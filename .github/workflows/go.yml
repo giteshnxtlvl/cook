@@ -30,10 +30,11 @@ jobs:
           go build -o cook ./cmd/cook
          
       - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
           tag: ${{ github.ref }}
-          files: cook
+          files: v2/cook
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
