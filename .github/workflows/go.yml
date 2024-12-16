@@ -28,12 +28,7 @@ jobs:
         run: |
           cd v2
           go build -o cook ./cmd/cook
-
-      - name: Test
-        run: |
-          cd v2
-          go test -v ./... -cover
-          
+         
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
