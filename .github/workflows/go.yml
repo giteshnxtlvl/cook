@@ -25,11 +25,15 @@ jobs:
           go mod tidy
 
       - name: Build
-        run: go build -o cook ./v2/cmd/cook
+        run: |
+          cd v2
+          go build -o cook ./cmd/cook
 
       - name: Test
-        run: go test -v ./v2/... -cover
-
+        run: |
+          cd v2
+          go test -v ./... -cover
+          
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
